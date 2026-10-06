@@ -1,0 +1,20 @@
+{
+  // 独立后端：部署后会得到自己的网址 https://signal-stats-api.<你的子域>.workers.dev
+  "name": "signal-stats-api",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-01",
+
+  // 与主站绑定「同一个」D1 / KV，才能读到登录数据（ID 取自你主站的 wrangler.jsonc）
+  "d1_databases": [
+    { "binding": "DB", "database_name": "gura-db", "database_id": "6e844fff-c1e2-4312-858e-33c39d5868d1" }
+  ],
+  "kv_namespaces": [
+    { "binding": "ZC_KV", "id": "b786c8e026294bf58d3e47cbfb0f4538" }
+  ],
+
+  "vars": {
+    // 允许调用本后端的前端网址（不带结尾斜杠），多个用逗号分隔
+    "https://zcc.zcatri520.workers.dev/": "https://你的前端域名.pages.dev"
+  },
+  "observability": { "enabled": true }
+}
